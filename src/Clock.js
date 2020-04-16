@@ -11,8 +11,15 @@ class Clock extends React.Component {
         this.state = {date: new Date(), numbers: [1, 2, 3, 4, 5]};
     }
 
+    // https://hackernoon.com/reactjs-component-lifecycle-methods-a-deep-dive-38275d9d13c0
+    // https://hackernoon.com/hn-images/1*sn-ftowp0_VVRbeUAFECMA.png
+    componentWillMount() {
+        console.log("logic comes here");
+    }
+
     componentDidMount() {
         // when the first render occurs
+        // https://www.w3schools.com/jsref/met_win_setinterval.asp
         this.timerID = setInterval(
             // we call the tick method
             () => this.tick(),
@@ -45,6 +52,8 @@ class Clock extends React.Component {
         const listItems = this.state.numbers.map((number) =>
             <li>{number}</li>
         );
+
+        // listItems = [<li>1</li>,...]
 
         return (
             <div className="text-left">

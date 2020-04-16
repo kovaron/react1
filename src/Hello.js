@@ -5,7 +5,8 @@ class Hello extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {showClock: false, text: "Show me the clock!"};
+        this.state = {showClock: true, text: "Hide the clock!"};
+        console.log(this.state);
         // this is needed, so this will work in the method below.
         this.onButtonClick = this.onButtonClick.bind(this);
     }
@@ -43,10 +44,12 @@ class Hello extends React.Component {
         // by default "this" is not known in a callback method, see constructor
         console.log("State before: " + JSON.stringify(this.state));
         // state and props in state should be used in a functional form
+        // NOPE !!!! --> this.state.showClock = false; DOES NOT TRIGGER MUTATION
         // not like this.state, or this.props
+
         this.setState(state => ({
             showClock: !state.showClock,
-            text: !state.showClock ? "Hide the clock" : "Show me the clock!"
+            text: !state.showClock ? "Hide the clock!" : "Show me the clock!"
         }));
     }
 
