@@ -1,4 +1,5 @@
 import React from "react";
+import NameForm from "./NameForm";
 
 class Clock extends React.Component {
 
@@ -7,7 +8,7 @@ class Clock extends React.Component {
         super(props);
         // state has to be initalized in the constructor,
         // state is a object
-        this.state = {date: new Date()};
+        this.state = {date: new Date(), numbers: [1, 2, 3, 4, 5]};
     }
 
     componentDidMount() {
@@ -35,9 +36,35 @@ class Clock extends React.Component {
     }
 
     render() {
-        return (
-            <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        if (this.props.showClockAsProps) {
+            return (
+                <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+            );
+        }
+
+        const listItems = this.state.numbers.map((number) =>
+            <li>{number}</li>
         );
+
+        return (
+            <div className="text-left">
+                <div className="row">
+                    <div className="col">
+                        <p>No clock here, bro, instead a list</p>
+                    </div>
+                    <div className="col">
+                        <ul>{listItems}</ul>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                        <NameForm />
+                    </div>
+                </div>
+
+            </div>
+        );
+
     }
 }
 
