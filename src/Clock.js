@@ -26,6 +26,7 @@ class Clock extends React.Component {
             // every 1000ms aka 1s
             1000
         );
+
     }
 
     componentWillUnmount() {
